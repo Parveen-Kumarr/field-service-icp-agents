@@ -1,0 +1,31 @@
+# Field-service ICP agent team - Python 3.10+
+# Install: pip install -r requirements.txt
+
+# The agents think with a local model via Ollama (default) or with Gemini.
+#   Local: install the Ollama app from https://ollama.com/download, then: ollama pull gemma4:12b
+#          (it is talked to over HTTP with httpx below; no extra Python package needed)
+#   Gemini: the google-genai SDK (Interactions API: function calling, Google Search, URL context, vision)
+google-genai>=2.25,<3
+
+# Local web search: rotates across several search engines so one blocking you doesn't stop research
+ddgs>=9.0,<10
+
+# Scout: live HTTP scraping and HTML parsing
+httpx>=0.27,<1
+beautifulsoup4>=4.12,<5
+
+# Reporter: ICP workbook
+openpyxl>=3.1,<4
+
+# Live console view of the agents' conversation
+rich>=13
+
+# Settings from .env (see .env.example)
+python-dotenv>=1.0,<2
+
+# Tests (no API key or network needed)
+pytest>=8,<10
+
+# Renders JavaScript-built pages (the speakers list is one). After installing, run once:
+#   python -m playwright install chromium
+playwright>=1.45,<2
